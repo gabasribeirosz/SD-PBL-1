@@ -87,6 +87,8 @@
 | 7      | Espera para garantir estabilidade da escrita.                        |
 | 8      | Desativa `wren` e reinicia FSM.                                      |
 
+A Figura 1 ilustra o fluxo de estados de uma Máquina de Estados Finitos (FSM) projetada para controlar o processo das operações matriciais. Essa FSM é responsável por coordenar a leitura dos dados de entrada, acionar o módulo de processamento correspondente (como soma, subtração ou multiplicação), e gerenciar a escrita dos resultados na memória de forma sequencial e sincronizada.
+
 <p align="center">
   <img src="fsm_diagram.png" alt="Diagrama FSM" width="500px">
 </p>
