@@ -127,42 +127,42 @@ Utilizou-se um divisor de clock interno para gerar um clock mais lento, garantin
 
 #### Matriz A:
 ```text
-[ 1  2  3  4  5 ]
-[ 6  7  8  9 10 ]
-[11 12 13 14 15 ]
-[16 17 18 19 20 ]
-[21 22 23 24 25 ]
+[ 1  2 ]
+[ 3  2 ]
 ```
 
 #### Matriz B:
 ```text
-[ 5  4  3  2  1 ]
-[10  9  8  7  6 ]
-[15 14 13 12 11 ]
-[20 19 18 17 16 ]
-[25 24 23 22 21 ]
+[ 3  2 ]
+[ 2  1 ]
 ```
 
 #### Resultado Esperado da Soma:
 ```text
-[ 6  6  6  6  6 ]
-[16 16 16 16 16 ]
-[26 26 26 26 26 ]
-[36 36 36 36 36 ]
-[46 46 46 46 46 ]
+[4  4]
+[5  5]
 ```
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/b35ad393-0f75-4aae-a4a4-3a1cc29a0f24" alt="Resultado da Soma" width="500px">
+</div>
+
+<p align="center">
+  <i>Figura 2 – Resultado da Soma de Matriz 2x2</i>
+</p>
+
 <p align="center">
   <img src="image.png" alt="RESULTADOS" width="500px">
 </p>
 <p align="center">
-  <i>Figura 2 – Resultado da Multiplicação de Matriz 2x2</i>
+  <i>Figura 3 – Resultado da Multiplicação de Matriz 2x2</i>
 </p>
 
 <p align="center">
   <img src="m3x3.png" alt="RESULTADOS MATRIZ 3X3" width="500px">
 </p>
 <p align="center">
-  <i>Figura 3 – Resultado da Multiplicação de Matriz 3x3</i>
+  <i>Figura 4 – Resultado da Multiplicação de Matriz 3x3</i>
 </p>
 
 
