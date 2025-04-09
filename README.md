@@ -147,6 +147,6 @@ Utilizou-se um divisor de clock interno para gerar um clock mais lento, garantin
 
 # 6. Referências
 
-<p style="text-align: justify;">
-  PATTERSON, David A.; HENNESSY, John L. <i>Computer Organization and Design: The Hardware/Software Interface – ARM Edition</i>. Morgan Kaufmann, 2016.
-</p>
+- KUO, Franklin P. et al. Fundamentos de Sistemas Digitais. Pearson Education do Brasil, 2015.
+- [Intel – Produtos Programáveis (FPGAs)](https://www.intel.com.br/content/www/br/pt/products/programmable.html)
+- [FPGA Academy – Cursos e Recursos Educacionais](https://fpgacademy.org/)
