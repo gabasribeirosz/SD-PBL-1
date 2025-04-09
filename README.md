@@ -165,6 +165,25 @@ Utilizou-se um divisor de clock interno para gerar um clock mais lento, garantin
   <i>Figura 4 – Resultado da Multiplicação de Matriz 3x3</i>
 </p>
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/31a30f82-67ec-4c41-900e-915cb00a1f93" alt="Resultado da Soma" width="500px">
+</div>
+
+<p align="center">
+  <i>Figura 5 – Resultado da Determinante de Matriz 2x2</i>
+</p>
+
+#### Matriz A:
+```text
+[ 1  2 ]
+[ 3  2 ]
+```
+
+#### Resultado Esperado da Determinante:
+```text
+[ -4 ]
+```
+No caso dessa determinante de valor negativo, o código retorna o resultado FC que no complemento à dois é "FC"
 
 # 5. Conclusão
 <p style="text-align: justify;"> O projeto mostrou-se eficaz para o processamento aritmético de matrizes utilizando FPGA. A implementação modular e a utilização de FSMs facilitaram a escalabilidade e manutenção do projeto. O uso de memória RAM para armazenamento e o controle sequencial das operações permitiram validar o sistema de forma prática com auxílio da ferramenta In-System Memory Content Editor do Quartus. </p> <p style="text-align: justify;"> A arquitetura desenvolvida demonstrou não apenas viabilidade técnica, mas também flexibilidade para inclusão de novas funcionalidades. A divisão clara entre os módulos de controle e operação facilitou o desenvolvimento incremental e a depuração durante o processo de implementação.</p> <p style="text-align: justify;"> Durante a execução do projeto, observou-se que o uso de FSMs proporcionou uma organização eficiente das etapas do processamento, assegurando a correta sincronização entre leitura de dados, processamento e escrita dos resultados. A aplicação prática em hardware permitiu avaliar em tempo real o funcionamento das operações, evidenciando a confiabilidade da abordagem adotada. </p> <p style="text-align: justify;"> Como proposta de melhoria futura, pretende-se: <ul> <li>Adicionar suporte a operações com ponto flutuante;</li> <li>Incluir uma interface de visualização com display ou comunicação serial com computador;</li> <li>Substituir o controle manual via switches por um sistema baseado em instruções armazenadas em ROM, com um decodificador de instruções e controle sequencial automatizado, aproximando o sistema de uma arquitetura de processador simples;</li> </ul> </p> <p style="text-align: justify;"> Dessa forma, o projeto representa não apenas uma solução funcional para o problema proposto, mas também uma base sólida para estudos mais avançados em arquiteturas digitais, processamento de sinais e sistemas embarcados utilizando FPGAs. </p>
