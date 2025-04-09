@@ -87,6 +87,14 @@
 | 7      | Espera para garantir estabilidade da escrita.                        |
 | 8      | Desativa `wren` e reinicia FSM.                                      |
 
+<p align="center">
+  <img src="fsm_diagram.png" alt="Diagrama FSM" width="500px">
+</p>
+<p align="center">
+  <i>Figura 1 – Diagrama da Máquina de Estados (FSM)</i>
+</p>
+
+
 ### 3.4 Memória RAM
 
 | Endereço | Conteúdo         |
@@ -138,3 +146,7 @@ Utilizou-se um divisor de clock interno para gerar um clock mais lento, garantin
 <p style="text-align: justify;"> O projeto mostrou-se eficaz para o processamento aritmético de matrizes utilizando FPGA. A implementação modular e a utilização de FSMs facilitaram a escalabilidade e manutenção do projeto. O uso de memória RAM para armazenamento e o controle sequencial das operações permitiram validar o sistema de forma prática com auxílio da ferramenta In-System Memory Content Editor do Quartus. </p> <p style="text-align: justify;"> Como proposta de melhoria futura, pretende-se: <ul><li>Adicionar suporte a operações com ponto flutuante;</li> <li>Incluir uma interface de visualização com display ou comunicação serial com computador;</li> <li>Substituir o controle manual via switches por um sistema baseado em instruções armazenadas em ROM, com um decodificador de instruções e controle sequencial automatizado, aproximando o sistema de uma arquitetura de processador simples.</li> </ul> </p>
 
 # 6. Referências
+
+<p style="text-align: justify;">
+  PATTERSON, David A.; HENNESSY, John L. <i>Computer Organization and Design: The Hardware/Software Interface – ARM Edition</i>. Morgan Kaufmann, 2016.
+</p>
