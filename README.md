@@ -147,7 +147,7 @@ Utilizou-se um divisor de clock interno para gerar um clock mais lento, garantin
   <img src="image.png" alt="RESULTADOS" width="500px">
 </p>
 <p align="center">
-  <i>Figura 2 – Resultado da Multiplicação</i>
+  <i>Figura 2 – Resultado da Multiplicação de Matriz 2x2</i>
 </p>
 
 <p align="center">
