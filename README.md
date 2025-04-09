@@ -59,6 +59,8 @@
 | `opposite.v`       | Gera a matriz oposta da matriz A.                                         |
 | `ram1port.v`       | Memória RAM de porta única para armazenar as matrizes.                    |
 
+**Tabela 1** - Estrutura do Projeto
+
 ### 3.2 Códigos das Operações
 
 | Código | Switch Ativado | Operação                  | Descrição                                                       |
@@ -70,6 +72,8 @@
 | 4      | `SW[4] = 1`     | Transposta                | Transpõe a matriz A.                                            |
 | 5      | `SW[5] = 1`     | Matriz Oposta             | Inverte o sinal de cada elemento da matriz A.                   |
 | 15     | Nenhum          | Nenhuma                   | Nenhuma operação é executada.                                   |
+
+**Tabela 2** - Código de Operações
 
 ⚠️ **Apenas um switch deve estar ativado por vez.**
 
@@ -86,6 +90,8 @@
 | 6      | Ativa `wren` e escreve resultado na RAM.                             |
 | 7      | Espera para garantir estabilidade da escrita.                        |
 | 8      | Desativa `wren` e reinicia FSM.                                      |
+
+**Tabela 3** - Máquina de Estados
 
 A Figura 1 ilustra o fluxo de estados de uma Máquina de Estados Finitos (FSM) projetada para controlar o processo das operações matriciais. Essa FSM é responsável por coordenar a leitura dos dados de entrada, acionar o módulo de processamento correspondente (como soma, subtração ou multiplicação), e gerenciar a escrita dos resultados na memória de forma sequencial e sincronizada.
 
@@ -104,6 +110,8 @@ A Figura 1 ilustra o fluxo de estados de uma Máquina de Estados Finitos (FSM) p
 | 0        | Matriz A         |
 | 1        | Matriz B         |
 | 2        | Resultado        |
+
+**Tabela 4** - Memória RAM
 
 ### 3.5 Clock
 
