@@ -18,9 +18,7 @@
 
 # 1. Introdução
 
-<p style="text-align: justify;">
-  Este projeto tem como objetivo implementar operações com matrizes utilizando a FPGA DE1-SoC da Altera, programada em Verilog. Foram desenvolvidos módulos para realizar soma, subtração, multiplicação matricial e multiplicação escalar com matrizes 5x5 de 8 bits. A seleção da operação ocorre via switches da placa, e a entrada/saída dos dados é manipulada através do In-System Memory Content Editor do Quartus.
-</p>
+<p style="text-align: justify;"> Este projeto tem como objetivo implementar operações com matrizes utilizando a FPGA DE1-SoC da Altera, programada em Verilog. Foram desenvolvidos módulos para realizar soma, subtração, multiplicação matricial, multiplicação escalar, transposição de matriz e geração da matriz oposta, todas com matrizes 5x5 de 8 bits. A seleção da operação ocorre via switches da placa, e a entrada/saída dos dados é manipulada através do In-System Memory Content Editor do Quartus. </p> <p style="text-align: justify;"> Cada operação é gerenciada por uma FSM (máquina de estados finita), que coordena a leitura das matrizes da memória RAM, ativa os módulos de operação e escreve os resultados. O projeto visa exercitar conceitos fundamentais de lógica sequencial, controle de memória, e operações aritméticas em hardware digital. </p>
 
 <p style="text-align: justify;">
   Cada operação é gerenciada por uma FSM (máquina de estados finita), que coordena a leitura das matrizes da memória RAM, ativa os módulos de operação e escreve os resultados. O projeto visa exercitar conceitos fundamentais de lógica sequencial, controle de memória, e operações aritméticas em hardware digital.
@@ -46,36 +44,36 @@
   A memória RAM de porta única permite operações de leitura e escrita, mas não simultaneamente. Durante uma operação de escrita, os dados são armazenados no endereço especificado; durante a leitura, os dados armazenados são recuperados. Em Verilog, a RAM de porta única pode ser implementada utilizando arrays de registradores, onde o acesso é controlado por sinais de habilitação de leitura/escrita e pelo clock.
 </p>
 
-# 3. Metodologia
+## 3. Metodologia
 
-## 3.1 Estrutura do Projeto
+### 3.1 Estrutura do Projeto
 
-| Módulo            | Descrição                                                                 |
-|-------------------|---------------------------------------------------------------------------|
-| `main.v`          | Módulo principal com FSM para coordenar leitura, operação e escrita.     |
-| `sum.v`           | Realiza soma elemento a elemento das matrizes.                            |
-| `subtraction.v`   | Realiza subtração elemento a elemento.                                    |
-| `multiplication.v`| Multiplicação matricial 5x5, feita sequencialmente.                       |
-| `scalar.v`        | Multiplicação escalar de cada elemento por um valor fixado.               |
-| `ram1port.v`      | Memória RAM de porta única para armazenar as matrizes.                   |
+| Módulo             | Descrição                                                                 |
+|--------------------|---------------------------------------------------------------------------|
+| `main.v`           | Módulo principal com FSM para coordenar leitura, operação e escrita.      |
+| `sum.v`            | Soma elemento a elemento das matrizes.                                    |
+| `subtraction.v`    | Subtração elemento a elemento.                                            |
+| `multiplication.v` | Multiplicação matricial 5x5 sequencial.                                   |
+| `scalar.v`         | Multiplicação escalar por um valor fixado.                                |
+| `transposed.v`     | Transposta da matriz A.                                                   |
+| `opposite.v`       | Gera a matriz oposta da matriz A.                                         |
+| `ram1port.v`       | Memória RAM de porta única para armazenar as matrizes.                    |
 
-## 3.2 Códigos das Operações
+### 3.2 Códigos das Operações
 
-| Código | Switch Ativado | Operação                    | Descrição                                                                 |
-|--------|----------------|-----------------------------|---------------------------------------------------------------------------|
-| 0      | `SW[0] = 1`     | Soma                        | Soma elemento a elemento entre duas matrizes.                             |
-| 1      | `SW[1] = 1`     | Subtração                   | Subtrai a segunda matriz da primeira.                                     |
-| 2      | `SW[2] = 1`     | Multiplicação de Matrizes   | Multiplica A por B (produto matricial).                                   |
-| 3      | `SW[3] = 1`     | Multiplicação por Escalar   | Multiplica cada elemento da matriz A por um escalar da matriz B.         |
-| 15     | Nenhum          | Nenhuma                     | Nenhuma operação é executada.                                             |
+| Código | Switch Ativado | Operação                  | Descrição                                                       |
+|--------|----------------|---------------------------|-----------------------------------------------------------------|
+| 0      | `SW[0] = 1`     | Soma                      | Soma elemento a elemento entre duas matrizes.                   |
+| 1      | `SW[1] = 1`     | Subtração                 | Subtrai a segunda matriz da primeira.                           |
+| 2      | `SW[2] = 1`     | Multiplicação Matricial   | Produto A x B.                                                  |
+| 3      | `SW[3] = 1`     | Multiplicação Escalar     | Multiplica cada elemento da matriz A por um escalar de B.      |
+| 4      | `SW[4] = 1`     | Transposta                | Transpõe a matriz A.                                            |
+| 5      | `SW[5] = 1`     | Matriz Oposta             | Inverte o sinal de cada elemento da matriz A.                   |
+| 15     | Nenhum          | Nenhuma                   | Nenhuma operação é executada.                                   |
 
-<p style="text-align: justify;">
-  <b>Atenção:</b> Apenas um switch deve estar ativado por vez.
-</p>
+⚠️ **Apenas um switch deve estar ativado por vez.**
 
-## 3.3 FSM - Máquina de Estados
-
-A FSM possui 9 estados principais, detalhados abaixo:
+### 3.3 FSM - Máquina de Estados
 
 | Estado | Ação                                                                 |
 |--------|----------------------------------------------------------------------|
@@ -89,21 +87,17 @@ A FSM possui 9 estados principais, detalhados abaixo:
 | 7      | Espera para garantir estabilidade da escrita.                        |
 | 8      | Desativa `wren` e reinicia FSM.                                      |
 
-## 3.4 Memória RAM
-
-Utiliza RAM de porta única (`ram1port`) com endereços fixos:
+### 3.4 Memória RAM
 
 | Endereço | Conteúdo         |
 |----------|------------------|
 | 0        | Matriz A         |
 | 1        | Matriz B         |
-| 2        | Resultado         |
+| 2        | Resultado        |
 
-## 3.5 Clock
+### 3.5 Clock
 
-<p style="text-align: justify;">
-Foi utilizado um divisor de clock interno para gerar um clock mais lento, garantindo estabilidade nas transições da FSM e evitando leituras incorretas.
-</p>
+Utilizou-se um divisor de clock interno para gerar um clock mais lento, garantindo estabilidade nas transições da FSM e evitando leituras incorretas.
 
 # 4. Resultados
 
