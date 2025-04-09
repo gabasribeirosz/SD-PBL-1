@@ -30,6 +30,8 @@ module main (switch, clock);
 	wire [199:0] scalar_result;
 	wire [199:0] transposed_result;
 	wire [199:0] opposite_result;
+	wire [7:0] determinant2x2_result;
+	wire [7:0] determinant3x3_result;
 
 	// Resultado selecionado conforme a operação
 	reg [199:0] selected_result; 
@@ -92,6 +94,16 @@ module main (switch, clock);
 		.matrix_b(matrix_b), // Também não é usada
 		.result(opposite_result)
 	);
+	
+	determinant2x2 (
+		.matrix_a(matrix_a),
+		.result(determinant2x2_result)
+	);
+
+	determinant3x3 (
+		.matrix_a(matrix_a),
+		.result(determinant3x3_result)
+	);
 
 	// Decodificador de operação baseado nos switches
 	always @(*) begin
@@ -102,6 +114,8 @@ module main (switch, clock);
 			switch[3]: operation_code = 4'd3; // Escalar
 			switch[4]: operation_code = 4'd4; // Transposta
 			switch[5]: operation_code = 4'd5; // Oposta
+			switch[6]: operation_code = 4'd6; // Determinante 2x2
+			switch[7]: operation_code = 4'd7; // Determinante 3x3
 			default: operation_code = 4'd15;  // Nenhuma operação
 		endcase
 	end
@@ -115,6 +129,8 @@ module main (switch, clock);
 			4'd3: selected_result = scalar_result;
 			4'd4: selected_result = transposed_result;
 			4'd5: selected_result = opposite_result;
+			4'd6: selected_result = {192'd0, determinant2x2_result}; // Determinante 2x2 em 8 bits
+			4'd7: selected_result = {192'd0, determinant3x3_result}; // Determinante 3x3 em 8 bits
 			default: selected_result = 200'd0;
 		endcase
 	end
