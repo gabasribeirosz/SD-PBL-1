@@ -172,7 +172,7 @@ O módulo transposed calcula a transposta de uma matriz 5x5 representada como um
 O módulo determinant2x2 calcula o determinante de uma submatriz 2x2 localizada no canto superior esquerdo de uma matriz 5x5 (representada como um vetor de 200 bits). O código primeiro extrai os elementos individuais da matriz usando dois laços generate, armazenando-os em uma estrutura bidimensional. Em seguida, realiza a operação (a*d - b*c) com os elementos das posições [0][0], [0][1], [1][0] e [1][1] para obter o determinante.
 </p>
 
-##### Determinante 2x3:
+##### Determinante 3x3:
 <p style="text-align: justify;">
 O módulo determinant3x3 calcula o determinante de uma submatriz 3x3 localizada no canto superior esquerdo de uma matriz 5x5 representada como um vetor linear de 200 bits. Utilizando laços generate, o vetor é reorganizado em uma estrutura de matriz bidimensional para facilitar o acesso aos elementos. O determinante é calculado usando a fórmula padrão para matrizes 3x3:
 det = a(ei − fh) − b(di − fg) + c(dh − eg),
